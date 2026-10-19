@@ -1,0 +1,151 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 40px;
+    font-family: roboto, sans-serif;
+    background-color: #e3fdff;
+    height: 100vh;
+    width: 60%;
+    margin:auto;
+}
+
+#bar-search{
+    display: flex;
+    align-items: center;
+    border: 2px solid #c3e4e8;
+    border-radius: 5px;
+    overflow: hidden;
+    min-width: 600px;
+    max-width: 800px;
+    margin: 10px 0;
+
+}
+
+#bar-search * {
+    padding: 8px 12px;
+}
+
+#location-search{
+    border: none;
+    outline: none;
+    flex: 1;
+    padding-right: 10px;
+    font-size: 16px;
+    background: transparent;
+}
+
+#bar-search button{
+    border: none;
+    background-color: rgb(39, 77, 181);
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+#bar-search button:hover{
+    background-color: rgb(64, 106, 219);
+    transition: ease-in 0.3s;
+    cursor: pointer;
+}
+
+
+#bar-search,
+#weather-current-conditions,
+#weather-following-days{
+    background-color: #c6e8ec;
+}
+
+#weather-current-conditions{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 18px 24px;
+    border-radius: 10px;
+    width: 43%;
+    margin: 40px 0;
+}
+
+#general-conditions{
+    display: flex;
+    justify-content: space-between;
+    column-gap: 40px;
+    width: 100%;
+
+}
+
+#current-weather-text{
+    font-size: 18px;
+}
+
+#current-weather-temp{
+    font-size: 3.5rem;
+    font-weight: 500;
+
+}
+
+#current-weather-desc{
+    font-size: 22px;
+    font-weight: 800;
+}
+
+#detailled-condition-in-details{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    justify-content: center;
+    width: 100%;
+}
+
+.metric{
+    display: flex;
+    padding: 8px 10px;
+    border-radius: 5px;
+    background-color: #ebf9f9;
+    width: 45%;
+    justify-content: center;
+}
+
+.metric-value{
+    margin: 0 8px;
+    font-weight: 600;
+}
+
+.metric-view{
+    margin: 0 5px;
+}
+
+#weather-following-days{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    padding: 24px;
+}
+
+.forecast-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.forecast-day{
+    display: grid;
+    width: 75px;
+    height: 130px;
+    background-color: #ecfbfd;
+    padding: 10px;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.forecast-day .day-icon{
+    margin-bottom: 0;
+    font-size: 2.7rem;
+}
