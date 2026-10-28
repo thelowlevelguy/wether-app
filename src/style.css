@@ -214,4 +214,6 @@ body{
     border-radius: 8px;  
 }
 
-
+.loading-spinner{
+    z-index: 1;
+}

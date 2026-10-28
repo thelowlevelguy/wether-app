@@ -50,6 +50,13 @@ const LogicControl = (() => {
 
 const DomControl = (() => {
 
+    const toggleLoading = (isLoading) => {
+        const searchBtn = document.getElementById('search-btn');
+        if (searchBtn) {
+            searchBtn.textContent = isLoading ? "Searching..." : "Search"
+        }
+    };
+
     const displayWeather = async (weather, unit) => {
         if (!weather || !weather.currentConditions) return;
 
@@ -121,7 +128,7 @@ const DomControl = (() => {
         })
    
     }
-    return {displayWeather}
+    return {displayWeather, toggleLoading}
 })()
 
 const MainApp = (() => {
@@ -135,10 +142,19 @@ const MainApp = (() => {
     //save the searched location
     let location = "antarctic";
     
-    const search = (loc, unit="metric") => {
+    const search = async(loc, unit="metric") => {
         if (loc){
-            const weather = LogicControl.getLocationData(loc, unit);
-            weather.then(data => DomControl.displayWeather(data, unit))
+            DomControl.toggleLoading(true);
+            try{
+                const weather = await LogicControl.getLocationData(loc, unit);
+                if (weather){
+                    await DomControl.displayWeather(weather, unit)
+                }
+            }catch(e){
+                throw new Error(e)
+            }finally {
+                DomControl.toggleLoading(false)
+            }     
         }
     }
     //default 
