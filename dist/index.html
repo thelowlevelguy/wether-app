@@ -1,0 +1,88 @@
+<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1.0"><link rel=stylesheet href=style.css type=text/css><title>Weather</title></head><body>
+    <div id=content>
+
+        
+        <div id=active-location>
+            <div>📍<span id=active-location-search> Antarctic</span> | <span id=active-location-timezone>Europe/Madrid</span></div>
+        </div>
+
+        
+        <div>
+            <div id=bar-search role=search>
+                <input type=search id=location-search name=q placeholder="Search city (e.g. Antarctic)...">
+                <button id=search-btn>Search</button>
+            </div>
+        </div>
+
+        
+        <div id=weather-current-conditions> 
+            
+            
+            <div id=general-conditions>
+                <div id=general-conditions-in-text>
+                    <div><span>CURRENT CONDITIONS</span></div>
+                    <div id=current-weather-temp><sapn>28°C</sapn></div>
+                    <div id=current-weather-desc><span>Partially Cloudy</span></div>
+                </div>
+                
+                
+                <div>
+                    <span id=general-conditions-in-view style=font-size:7rem>⛅</span>
+                </div>
+            </div>
+
+            
+            <div id=detailled-condition-in-details>
+                <div class=metric><span class=metric-view>💧</span> <span class=metric-indicator>Humidity:</span> <span class=metric-value id=humidity-indicator>65%</span></div>
+                <div class=metric><span class=metric-view>💨</span> <span class=metric-indicator>Wind:</span> <span class=metric-value id=wind-indicator>14 km/h</span></div>
+                <div class=metric><span class=metric-view>☀️</span> <span class=metric-indicator>UV Index:</span> <span class=metric-value id=uv-index-indicator>6 High</span></div>
+            </div>
+
+        </div>
+
+        
+        <div id=weather-following-days>
+            <div><span>DAYS AFTER (7-DAY FORECAST)</span></div>
+            <div class=forecast-list>
+                <div class=forecast-day>
+                    <span class=day-name>Mon</span>
+                    <span class=day-icon>🌧️</span>
+                    <span class=day-temp><span class=day-temp-max>26°</span> /<span class=day-temp-min>21°</span></span>
+                </div>
+                <div class=forecast-day>
+                    <span class=day-name>Tue</span>
+                    <span class=day-icon>🌧️</span>
+                    <span class=day-temp><span class=day-temp-max>26°</span> / <span class=day-temp-min>21°</span></span>
+                </div>
+                <div class=forecast-day>
+                    <span class=day-name>Wed</span>
+                    <span class=day-icon>⛅</span>
+                    <span class=day-temp><span class=day-temp-max>26°</span> / <span class=day-temp-min>21°</span></span>
+                </div>
+                <div class=forecast-day>
+                    <span class=day-name>Thu</span>
+                    <span class=day-icon>☀️</span>
+                    <span class=day-temp><span class=day-temp-max>26°</span> / <span class=day-temp-min>21°</span></span>
+                </div>
+                <div class=forecast-day>
+                    <span class=day-name>Fri</span>
+                    <span class=day-icon>☀️</span>
+                    <span class=day-temp><span class=day-temp-max>26°</span> / <span class=day-temp-min>21°</span></span>
+                </div>
+                <div class=forecast-day>
+                    <span class=day-name>Sat</span>
+                    <span class=day-icon>⛅</span>
+                    <span class=day-temp><span class=day-temp-max>26°</span> / <span class=day-temp-min>21°</span></span>
+                </div>
+                <div class=forecast-day>
+                    <span class=day-name>Sun</span>
+                    <span class=day-icon>🌧️</span>
+                    <span class=day-temp><span class=day-temp-max>26°</span> / <span class=day-temp-min>21°</span></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src=script.js></script>
+
+</body></html>
