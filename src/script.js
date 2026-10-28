@@ -111,14 +111,7 @@ const DomControl = (() => {
             forecastDayTemps.setAttribute("class", "forecast-day-temps")
             forecastDayTemps.style.display = "flex";
 
-            const minTemp = document.createElement("span")
-            const maxTemp = document.createElement("span")
-            minTemp.setAttribute("class", "forecast-day-min-temp")
-            maxTemp.setAttribute("class", "forecast-day-max-temp")
-            minTemp.textContent = day.tempmin + tempUnit
-            maxTemp.textContent = day.tempmax + tempUnit
-
-            forecastDayTemps.innerHTML = `${day.tempmin} / ${day.tempmax}`
+            forecastDayTemps.innerHTML = `${day.tempmin} ${tempUnit}  /  ${day.tempmax} ${tempUnit}`
 
             forecastDay.appendChild(forecastDayName)
             forecastDay.appendChild(forecastDayIcon)
