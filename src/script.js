@@ -59,6 +59,19 @@ const DomControl = (() => {
         }
     };
 
+    const toggleTempUnit = (unit) => {
+        const fareinheitUnitBtn = document.getElementById("temp-unit-fareinheit");
+        const celciusUnitBtn = document.getElementById("temp-unit-celcius")
+
+        if (unit === "metric"){
+            celciusUnitBtn.setAttribute("class", "active-unit")
+            fareinheitUnitBtn.removeAttribute("class", "active-unit")
+        }else if (unit === "us"){
+            fareinheitUnitBtn.setAttribute("class", "active-unit")
+            celciusUnitBtn.removeAttribute("class", "active-unit")
+        }
+    }
+
     const displayWeather = async (weather, unit) => {
         if (!weather || !weather.currentConditions) return;
 
@@ -95,10 +108,10 @@ const DomControl = (() => {
         uv.textContent = weather.currentConditions.uvindex;
 
         const forecastElem = document.querySelector(".forecast-list");
-        forecastElem.textContent = "";
+        forecastElem.innerHTML = "";
 
-        const days = weather.days.slice(0, 7);
-        days.forEach(async(day) => {
+        const days = weather.days.slice(1, 8);
+        for (const day of days) {
             const forecastDay = document.createElement("div")
             const ds = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -126,20 +139,16 @@ const DomControl = (() => {
             forecastDay.appendChild(forecastDayIcon)
             forecastDay.appendChild(forecastDayTemps)
 
-            forecastElem.appendChild(forecastDay)
-        })
+            forecastElem.append(forecastDay)
+        }
    
     }
-    return {displayWeather, toggleLoading}
+    return {displayWeather, toggleLoading, toggleTempUnit}
 })()
 
 const MainApp = (() => {
     const searchBtn = document.getElementById("search-btn");
     const searchInput = document.getElementById("location-search");
-
-    const fareinheitUnitBtn = document.getElementById("temp-unit-fareinheit");
-    const celciusUnitBtn = document.getElementById("temp-unit-celcius")
-    celciusUnitBtn.setAttribute("class", "active-unit")
 
     //save the searched location
     let location = "antarctic";
@@ -160,25 +169,27 @@ const MainApp = (() => {
         }
     }
     //default 
+    
+    DomControl.toggleTempUnit("metric")
     search(location)
 
     searchBtn.addEventListener("click", () => {
         location = searchInput.value;
+        DomControl.toggleTempUnit("metric")
         search(location);
         searchInput.value = "";
-
     })
 
-    fareinheitUnitBtn.addEventListener("click", () => {
-        celciusUnitBtn.removeAttribute("class", "active-unit")
-        fareinheitUnitBtn.setAttribute("class", "active-unit")
-        search(location, "us");
+    const fareinheitUnitBtn = document.getElementById("temp-unit-fareinheit");
+    const celciusUnitBtn = document.getElementById("temp-unit-celcius")
 
+    fareinheitUnitBtn.addEventListener("click", () => {
+        DomControl.toggleTempUnit("us")
+        search(location, "us");
     })
 
     celciusUnitBtn.addEventListener("click", () =>{
-        fareinheitUnitBtn.removeAttribute("class", "active-unit")
-        celciusUnitBtn.setAttribute("class", "active-unit")
+        DomControl.toggleTempUnit("metric")
         search(location);
     })
 
